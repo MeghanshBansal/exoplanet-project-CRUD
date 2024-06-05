@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "57999a46-139d-490a-bf85-2c90524216b1",
+		"name": "ExoPlanet api collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30419565"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "add-exoplanet",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Proxima Centauri b\",\n    \"description\": \"An exoplanet orbiting in the habitable zone of the closest star to the Sun, Proxima Centauri.\",\n    \"distanceFromEarth\": 70,\n    \"radius\": 1.1,\n    \"mass\": 1.27,\n    \"typeOfExoplanet\": \"Terrestrial\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/add-exoplanet"
+			},
+			"response": []
+		},
+		{
+			"name": "List-all-exoplanets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/list-exoplanet"
+			},
+			"response": []
+		},
+		{
+			"name": "Get-Exoplanet-by-id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Update-exoplanet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"inputFields\": [\n        {\n            \"key\": \"name\",\n            \"value\": \"Proxima Centauri\"\n        },\n        {\n            \"key\": \"radius\",\n            \"value\": 1.2\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/update-exoplanet?id=6df8f871-4751-4c9e-8760-48e48421b944",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"update-exoplanet"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6df8f871-4751-4c9e-8760-48e48421b944"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-fuel-estimation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/get-fuel-estimation?id=6df8f871-4751-4c9e-8760-48e48421b944&crewSize=5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"get-fuel-estimation"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6df8f871-4751-4c9e-8760-48e48421b944"
+						},
+						{
+							"key": "crewSize",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete-exoplanet",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/delete-exoplanet?id=6df8f871-4751-4c9e-8760-48e48421b944",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"delete-exoplanet"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6df8f871-4751-4c9e-8760-48e48421b944"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
