@@ -1,13 +1,13 @@
 package Domain
 
 import (
+	"Exoplanet/Models"
 	"errors"
-	u "github.com/google/uuid"
 	"log"
 	"strings"
-)
 
-import "NTTData/Models"
+	u "github.com/google/uuid"
+)
 
 type Exoplanet interface {
 	AddExoplanet(exoplanet Models.Exoplanet) error

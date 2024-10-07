@@ -3,6 +3,8 @@ package ApiHandler
 import (
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 const defaultListenAddr = ":8000"
@@ -12,7 +14,7 @@ type ServerOpts struct {
 }
 
 type Server interface {
-	Start() error
+	Start(router *mux.Router) error
 }
 
 func NewServer(port string) Server {
@@ -24,9 +26,9 @@ func NewServer(port string) Server {
 	}
 }
 
-func (s *ServerOpts) Start() error {
+func (s *ServerOpts) Start(router *mux.Router) error {
 	log.Println("Starting Server at Port: ", s.Port)
-	err := http.ListenAndServe(s.Port, nil)
+	err := http.ListenAndServe(s.Port, router)
 	if err != nil {
 		log.Fatalf("Failed to start the server")
 		return err

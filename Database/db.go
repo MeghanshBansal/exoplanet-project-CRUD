@@ -1,13 +1,14 @@
 package Database
 
 import (
-	"NTTData/Models"
+	"Exoplanet/Models"
 	"fmt"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
 	"log"
 	"sync"
 	"time"
+
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 type DbService interface {

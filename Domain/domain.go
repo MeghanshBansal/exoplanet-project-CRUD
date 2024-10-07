@@ -1,6 +1,6 @@
 package Domain
 
-import "NTTData/Database"
+import "Exoplanet/Database"
 
 type Service interface {
 	Exoplanet

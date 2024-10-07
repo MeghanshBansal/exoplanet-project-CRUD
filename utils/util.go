@@ -11,8 +11,7 @@ func ReturnResponse(w http.ResponseWriter, statusCode int, response interface{})
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
 	var buf = new(bytes.Buffer)
-	enc := json.NewEncoder(buf)
-	err := enc.Encode(response)
+	err := json.NewEncoder(buf).Encode(response)
 	if err != nil {
 		log.Fatalln(err.Error())
 		return

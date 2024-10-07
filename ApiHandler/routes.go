@@ -1,13 +1,15 @@
 package ApiHandler
 
 import (
-	"NTTData/Domain"
-	"NTTData/Models"
-	"NTTData/utils"
+	"Exoplanet/Domain"
+	"Exoplanet/Models"
+	"Exoplanet/utils"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"strconv"
+
+	"github.com/gorilla/mux"
 )
 
 type Webservice struct {
@@ -24,27 +26,27 @@ func NewWebservices(servicePort string, d Domain.Service) *Webservice {
 }
 
 func (s *Webservice) Start() error {
-	s.addRoutes()
-	err := s.Server.Start()
+	router := s.addRoutes()
+	err := s.Server.Start(router)
 	return err
 }
 
-func (s *Webservice) addRoutes() {
-	http.HandleFunc("/ping", s.ping)
-	http.HandleFunc("/add-exoplanet", s.AddExoplanets)
-	http.HandleFunc("/list-exoplanet", s.ListExoplanet)
-	http.HandleFunc("/get-exoplanet", s.GetExoplanetById)
-	http.HandleFunc("/update-exoplanet", s.UpdateExoplanet)
-	http.HandleFunc("/delete-exoplanet", s.DeleteExoplanet)
-	http.HandleFunc("/get-fuel-estimation", s.GetFuelEstimation)
+func (s *Webservice) addRoutes() *mux.Router {
+	r := mux.NewRouter().StrictSlash(true)
+	r.HandleFunc("/ping", s.ping).Methods(http.MethodGet)
+	r.HandleFunc("/add-exoplanet", s.AddExoplanets).Methods(http.MethodPut)
+	r.HandleFunc("/list-exoplanet", s.ListExoplanet).Methods(http.MethodGet)
+	r.HandleFunc("/get-exoplanet", s.GetExoplanetById).Methods(http.MethodGet)
+	r.HandleFunc("/update-exoplanet", s.UpdateExoplanet).Methods(http.MethodPost)
+	r.HandleFunc("/delete-exoplanet", s.DeleteExoplanet).Methods(http.MethodDelete)
+	r.HandleFunc("/get-fuel-estimation", s.GetFuelEstimation).Methods(http.MethodGet)
+
+	return r
 }
 
 func (s *Webservice) ping(w http.ResponseWriter, r *http.Request) {
-	_, err := w.Write([]byte("pong"))
-	if err != nil {
-		return
-	}
-	return
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode("pong")
 }
 
 func (s *Webservice) AddExoplanets(w http.ResponseWriter, r *http.Request) {

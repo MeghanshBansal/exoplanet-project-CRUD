@@ -1,7 +1,7 @@
 package Database
 
 import (
-	"NTTData/Models"
+	"Exoplanet/Models"
 	"errors"
 )
 

@@ -1,8 +1,8 @@
 package domain
 
 import (
-	"NTTData/Database"
-	"NTTData/Domain"
+	"Exoplanet/Database"
+	"Exoplanet/Domain"
 )
 
 func InitializeDomain(dbService Database.DbService) Domain.Service {

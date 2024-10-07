@@ -1,10 +1,10 @@
 package main
 
 import (
-	"NTTData/ApiHandler"
-	"NTTData/Database"
-	"NTTData/Domain"
-	"NTTData/Models"
+	"Exoplanet/ApiHandler"
+	"Exoplanet/Database"
+	"Exoplanet/Domain"
+	"Exoplanet/Models"
 	"fmt"
 	"os"
 )

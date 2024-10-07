@@ -1,11 +1,12 @@
 package domain
 
 import (
-	"NTTData/Models"
+	"Exoplanet/Models"
 	"errors"
+	"testing"
+
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestDomain_AddExoplanet(t *testing.T) {

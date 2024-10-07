@@ -1,9 +1,10 @@
 package domain
 
 import (
-	"NTTData/Models"
-	"github.com/golang/mock/gomock"
+	"Exoplanet/Models"
 	"reflect"
+
+	"github.com/golang/mock/gomock"
 )
 
 type MockDBServices struct {
